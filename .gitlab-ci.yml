@@ -1,0 +1,84 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  IMAGE_LATEST: $CI_REGISTRY_IMAGE:latest
+  DOCKER_TLS_CERTDIR: "/certs"
+
+before_script:
+  - echo "$GITTOCKEN_AUTHFILE" > auth.json
+
+.deploy:template: &deployTPL
+  stage: deploy
+  image:
+    name: debreczeniandras/deployerphp:7-rc2
+    entrypoint: [""]
+  before_script:
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - chmod 644 ~/.ssh/known_hosts
+    - echo "$SSH_PRIVATE_KEY_DEP11" | tr -d '\r' | ssh-add - > /dev/null
+  script:
+    - dep deploy ${HOST} -vvv
+
+
+build:
+  stage: build
+  image:
+    name: pwrk-gitlab.pwrk.de:5050/personalwerk-dps/docker/php_helper:2
+    entrypoint: [""]
+  artifacts:
+    paths:
+      - vendor/
+    expire_in: 2 hours
+  script:
+    - composer install
+
+phpunit:
+  stage: test
+  image:
+    name: pwrk-gitlab.pwrk.de:5050/personalwerk-dps/docker/php_helper:2
+    entrypoint: [""]
+  before_script:
+    - mkdir -p /mnt/var/log/
+    - chmod 0777 /mnt/var/log/
+  script:
+    - php vendor/bin/phpunit tests
+
+phpcs:
+  stage: test
+  image:
+    name: pwrk-gitlab.pwrk.de:5050/personalwerk-dps/docker/php_helper:2
+    entrypoint: [""]
+  script:
+    - php vendor/bin/phpcs src
+
+deploy:int:
+  only:
+    - develop
+  resource_group: test
+  variables:
+    HOST: int
+ <<: *deployTPL
+
+# deploy:uat:
+#  only:
+#    - stage
+#  resource_group: test
+#  variables:
+#    HOST: uat
+#  <<: *deployTPL
+
+#deploy:prod:
+#  only:
+#    - main
+#  when: manual
+#  resource_group: test
+#  variables:
+#    HOST: prod
+# <<: *deployTPL

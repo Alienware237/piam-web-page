@@ -1,0 +1,5 @@
+{
+    "gitlab-oauth": {
+        "pwrk-gitlab.pwrk.de": "ACCESS_TOKEN_WITH_READ_API_PERMISSION"
+    }
+}

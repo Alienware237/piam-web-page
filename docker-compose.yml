@@ -1,0 +1,52 @@
+version: "3.4"
+
+networks:
+  my-web-page:
+    #      name: 50_default
+    driver: bridge
+
+services:
+
+  my-web-page:
+    build:
+      context: .
+      dockerfile: ./Symfony_nude1/Dockerfile
+    networks:
+      my-web-page:
+    volumes:
+      - '.:/var/www/html'
+      - '/mnt/var:/mnt/var'
+    ports:
+      - "8093:80"
+  php:
+    build:
+      dockerfile: ./php_helper/Dockerfile
+    volumes:
+      - .:/opt/project
+      - /mnt/var:/mnt/var
+      - /etc/cron.d/:/etc/cron.d/
+
+  runner:
+    build:
+      dockerfile: ./php_helper/Dockerfile
+    volumes:
+      - .:/opt/project
+      - /mnt/var:/mnt/var
+###> doctrine/doctrine-bundle ###
+  database:
+    image: postgres:${POSTGRES_VERSION:-15}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
+###< doctrine/doctrine-bundle ###
+
+volumes:
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###

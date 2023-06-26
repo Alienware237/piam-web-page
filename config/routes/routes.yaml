@@ -1,0 +1,21 @@
+controllers:
+    resource: ../../src/Kernel.php
+    type: annotation
+
+controllersV2:
+    resource: ../../src/Controller/
+    type: annotation
+
+app.swagger_ui:
+    path: /v2/doc
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger_ui }
+
+app.swagger:
+    path: /v2/doc.json
+    methods: GET
+    defaults: { _controller: nelmio_api_doc.controller.swagger }
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
