@@ -1,0 +1,27 @@
+#jobmap {
+  height: 450px;
+  transition: height 0.5s;
+  -webkit-transition: height 0.5s;
+
+  &.hidden {
+    height: 0;
+  }
+
+  .cluster-0 > div > span {
+    line-height: 44px;
+    font-weight: bold;
+  }
+
+  .cluster-1 > div > span {
+    line-height: 60px;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 320px;
+  }
+
+  @media screen and (max-width: 467px) {
+    height: 120px;
+  }
+}

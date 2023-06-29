@@ -1,0 +1,40 @@
+@import "../components/mixins";
+@import "../components/fonts";
+@import "~font-awesome/scss/font-awesome";
+@import "../bootstrap/bootstrap_global";
+
+body#pwrk-jobboard {
+  margin: 0;
+}
+
+#pwrk-jobboard-main {
+  @import "../bootstrap/bootstrap";
+  @import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
+
+  @import "../components/content";
+
+  @import "../components/buttons";
+  @import "../components/form";
+  @import "../components/icons";
+  @import "../components/typography";
+  @import "../components/filtercount";
+  @import "../components/pagination";
+  @import "../components/quickview";
+  @import "../components/jobagent";
+  @import "../components/jobmap";
+
+  @import "../components/lightbox";
+
+  .fa {
+    font-family: FontAwesome !important;
+  }
+}
+
+#pwrk-jobboard-main li:before {
+  content: none !important;
+}
+
+#pwrk-jobboard-main .sidebar__filter-block ul li {
+  line-height: inherit !important;
+  margin-bottom: 0 !important;
+}

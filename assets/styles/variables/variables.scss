@@ -1,0 +1,25 @@
+/* custom variables and bootstrap overrides */
+$color-brand:                  #8e0038;
+$color-brand-highlight:        #bf1528;
+$color-brand-text:             #ffffff;
+$color-headline:               #bf1528;
+$color-caret:                  $color-headline;
+$color-content:                #807e6f;
+$color-bg-content:             $color-brand-text;
+$color-content-light:          #c3c0bd;
+$color-content-active:         #000000;
+$color-content-highlight:      #99938d;
+$color-content-hover:          #403c38;
+$color-content-invalid:        #b4b0ac;
+$color-page-title:             $color-bg-content;
+$color-bg-page:                #f0efee;
+$arrow-light:                  #88817b;
+$star-light:                   #f46688;
+$card-gray:                    #f7f7f6;
+
+$font-family-sans-serif:       "FS Me";
+$font-family-bold:             $font-family-sans-serif;
+$font-family-light:            $font-family-sans-serif;
+$font-family-wf:               $font-family-sans-serif;
+
+$fa-font-path:                 "../../fonts";

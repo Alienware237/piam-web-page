@@ -1,0 +1,189 @@
+& {
+  font-size: 18px;
+  font-family: $font-family-sans-serif;
+  background: $color-bg-page;
+  line-height: 1.5;
+
+  @media (max-width: 1023px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
+}
+
+.accordion-heading > span {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.jobs__col-accordion-block .card-header .btn {
+  font-size: 16px;
+}
+
+.card-body h5 {
+  font-weight: 700;
+  font-size: 18px;
+
+  @media (max-width: 1023px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
+}
+
+.card-body {
+  font-size: 18px;
+
+  @media (max-width: 1023px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
+}
+
+.sidebar__filter-title {
+  .sidebar__filter-title-headline {
+    font-size: 18px;
+
+    @media (max-width: 1023px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 767px) {
+      font-size: 13px;
+    }
+  }
+
+  .sidebar__filter-search {
+    .sidebar__filter-search-input {
+      font-size: 18px;
+
+      @media (max-width: 1023px) {
+        font-size: 16px;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.sidebar__filter-block {
+  ul {
+    li {
+      font-size: 18px;
+
+      @media (max-width: 1023px) {
+        font-size: 16px;
+      }
+
+      @media (max-width: 767px) {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.form-check .sidebar__list-entry-check-input, .form-check input, .sidebar__list-entry-check .sidebar__list-entry-check-input, .sidebar__list-entry-check input {
+  width: 18px;
+  height: 18px;
+
+  @media (max-width: 1023px) {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media (max-width: 767px) {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+.form-check, .sidebar__list-entry-check {
+  min-height: 18px;
+
+  @media (max-width: 1023px) {
+    min-height: 16px;
+  }
+
+  @media (max-width: 767px) {
+    min-height: 13px;
+  }
+}
+
+.sidebar__filter-details .sidebar__list-entry-check {
+  margin-top: 6px;
+
+  @media (max-width: 1023px) {
+    margin-top: 4px;
+  }
+}
+
+.search__col-input {
+  font-size: 18px;
+
+  @media (max-width: 1023px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar__filter-block ul li .sidebar__list-entry-title {
+    margin-top: 2px;
+  }
+}
+
+.jobs__match-title h3, .card-body h3 {
+  font-size: 26px;
+
+  @media (max-width: 1023px) {
+    font-size: 24px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 22px;
+  }
+}
+
+.button {
+  font-size: 18px;
+
+  @media (max-width: 1023px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) {
+    font-size: 13px;
+  }
+}
+
+.btn-box .button:before {
+  @media (max-width: 1023px) {
+    width: 8px;
+    height: 8px;
+  }
+
+  @media (max-width: 767px) {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+.pagination li .page-link span {
+  font-size: 30px;
+
+  @media (max-width: 767px) {
+    font-size: 28px;
+  }
+}

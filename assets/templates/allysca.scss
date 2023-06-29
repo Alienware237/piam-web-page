@@ -1,0 +1,14 @@
+@import "../styles/variables";
+
+$color-brand: #50c5c9; // allysca blaugrün 80%
+$color-brand-highlight: #7cd3d6; // allysca blaugrün 60%
+$color-brand-text: #ffffff;
+$color-brand-background: #56828c; // allysca dunkelgrün 80%
+$color-brand-secondary: $color-brand-background;
+$color-brand-secondary-highlight: #2d6470; // allysca dunkelgrün 100%
+$color-headline: #25b7bc; // allysca blaugrün 100%
+$color-caret: $color-headline;
+$color-bg-content: $color-brand-text;
+$color-page-title: $color-bg-content;
+
+@import "../styles/base";

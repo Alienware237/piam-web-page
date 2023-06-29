@@ -1,0 +1,7 @@
+.filter-trigger {
+  & span.filter-count {
+    &.filter-count__no-filters {
+      display: none;
+    }
+  }
+}

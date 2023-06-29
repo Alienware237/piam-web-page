@@ -1,0 +1,14 @@
+@import "../styles/variables";
+
+$color-brand: #0063be;
+$color-brand-highlight: #c7d300;
+$color-brand-text: #ffffff;
+$color-headline: $color-brand;
+$color-brand-background: $color-content;
+$color-brand-secondary: $color-brand-background;
+$color-brand-secondary-highlight: $color-content-hover;
+$color-caret: $color-headline;
+$color-bg-content: $color-brand-text;
+$color-page-title: $color-bg-content;
+
+@import "../styles/base";

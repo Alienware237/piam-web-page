@@ -1,0 +1,756 @@
+@import "../styles/variables";
+@import "../styles/components/fonts";
+
+$color-ergo-red: #8e0038;
+$color-red: #bf1528;
+$color-black: #000000;
+$color-white: #ffffff;
+
+$color-primary-violett: #b31767;
+$color-primary-green: #009284;
+$color-primary-iceblue: #0f94a7;
+$color-primary-orange: #e87a16;
+
+$color-secondary-violett: #e4d6e4;
+$color-secondary-green: #b5d5c1;
+$color-secondary-iceblue: #ccebed;
+$color-secondary-orange: #f7dcbb;
+$color-secondary-yellow: #f8e89d;
+
+
+
+@font-face {
+  font-family: 'Federa-Serif';
+  src: url('../fonts/Federa-Serif.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Federa-Serif-bold';
+  src: url('../fonts/Federa-Serif-bold.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+
+
+/**
+* Colors
+*/
+.red, a.red {
+  color: $color-red;
+}
+
+.ergo-red, a.ergo-red {
+  color: $color-ergo-red;
+}
+
+.color-ergoVE, .color-ergoVO {
+  .color-primary {
+    background-color: $color-primary-violett;
+  }
+}
+
+.color-ergoVGe {
+  .color-primary {
+    background-color: $color-primary-violett;
+  }
+  .color-secondary {
+    background-color: $color-secondary-yellow;
+  }
+}
+
+.color-ergoVE .color-secondary {
+  background-color: $color-secondary-iceblue;
+}
+
+.color-ergoVO .color-secondary {
+  background-color: $color-secondary-orange;
+}
+
+.color-ergoGrE, .color-ergoGrGe {
+  .color-primary {
+    background-color: $color-primary-green;
+  }
+}
+
+.color-ergoGrE .color-secondary {
+  background-color: $color-secondary-iceblue;
+}
+
+.color-ergoGrGe .color-secondary {
+  background-color: $color-secondary-yellow;
+}
+
+.color-ergoEE, .color-ergoEV, .color-ergoEGr {
+  .color-primary {
+    background-color: $color-primary-iceblue;
+  }
+}
+
+.color-ergoEE, .color-secondary {
+  background-color: $color-secondary-iceblue;
+}
+
+.color-ergoEV .color-secondary {
+  background-color: $color-secondary-violett;
+}
+
+.color-ergoEGr .color-secondary {
+  background-color: $color-secondary-green;
+}
+
+.color-ergoOV, .color-ergoOGe {
+  .color-primary {
+    background-color: $color-primary-orange;
+  }
+}
+
+.color-ergoOV .color-secondary {
+  background-color: $color-secondary-violett;
+}
+
+.color-ergoOGe .color-secondary {
+  background-color: $color-secondary-yellow;
+}
+
+
+
+/**
+* Base
+*/
+html, body {
+  line-height: 1;
+}
+
+.print {
+  display: none !important;
+}
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  margin: auto;
+  max-width: 1200px;
+  min-width: 300px;
+}
+
+
+
+/**
+* Job view 2021
+*/
+.jobad-headerimage {
+  position: relative;
+
+  img {
+    display: block;
+  }
+}
+.jobad-title-box {
+  align-items: stretch;
+  display: flex;
+  min-height: 266px;
+
+  > div {
+    color: white;
+    padding: 3.6% 0;
+    position: relative;
+  }
+
+  .left {
+    flex-grow: 12;
+    max-width: 100%;
+    min-width: 300px;
+  }
+
+  .right {
+    display: none;
+    flex-grow: 3;
+    max-width: 300px;
+    min-width: 300px;
+  }
+
+  .left > h1, .left > div, .right > div {
+    position: relative;
+    padding-left: 4.2%;
+    padding-right: 4.2%;
+  }
+
+  .right > img {
+    bottom: 15%;
+    left: 15%;
+    position: absolute;
+    right: 15%;
+    width: auto;
+  }
+
+  h1 {
+    font-family: 'Federa-Serif-bold';
+    font-size: 46px;
+    font-size: clamp(36px, 8vw, 46px);
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    margin: 8px 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  h1 sup {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-family: 'Federa-Serif';
+    font-size: 33px;
+    font-size: clamp(26px, 8vw, 33px);
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    margin: 8px 0 15px 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .introtext {
+    display: unset;
+    font-family: 'FS Me';
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+}
+
+
+
+/**
+* Job view 2021 short
+*/
+.short .jobad-title-box {
+  .left {
+    flex-grow: 9;
+  }
+
+  .right {
+    display: unset;
+  }
+
+  .introtext {
+    display: none;
+  }
+}
+
+
+
+/**
+* Content
+*/
+.content-wrap {
+  font-family: 'FS Me';
+  font-size: 19px;
+  line-height: 1.3;
+  padding: 36px 4.2% 22px;
+  position: relative;
+
+  h2, a, .subline {
+    color: $color-ergo-red;
+  }
+
+  &.color-primary {
+    div, h2, a, a:visited, .subline, p, ul li {
+      color: $color-white;
+    }
+  }
+
+  h2 {
+    font-family: 'FS Me';
+    font-size: 29px;
+    font-weight: 600;
+    margin: 8px 0 0 0;
+  }
+
+  .subline {
+    display: block;
+    font-family: 'FS Me';
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+    padding-bottom: 10px;
+  }
+
+  .bigfont {
+    font-size: 29px;
+  }
+
+  .block {
+    margin-bottom: 28px;
+  }
+
+  p, ul li {
+    color: $color-black;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+
+  ul {
+    margin: 0 0 16px 20px;
+    padding: 0;
+  }
+
+  ul li {
+    margin: 0 0 12px 0;
+  }
+
+  a, a:visited {
+    color: $color-ergo-red;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  hr {
+    margin: 40px 0;
+  }
+
+  .without-edge-padding {
+    padding: 36px 0 50px;
+  }
+
+  .kununu img {
+    width: 125px;
+    margin: 0 20px 0 0;
+  }
+
+  .col2 {
+    align-items: stretch;
+    display: flex;
+
+    .left {
+      flex-grow: 9;
+      margin-right: 50px;
+      max-width: 100%;
+      min-width: 315px;
+    }
+
+    .right {
+      flex-grow: 3;
+      max-width: 200px;
+      min-width: 200px;
+      position: relative;
+
+      .benefits {
+        display: inherit;
+        margin: 0 18px 28px;
+        text-align: center;
+
+        span {
+          border-radius: 33px;
+          display: inline-block;
+          height: 62px;
+          margin: 6px;
+          width: 62px;
+        }
+      }
+    }
+  }
+}
+
+.right .logo {
+  bottom: 0;
+  max-width: 200px;
+}
+
+
+
+/**
+* Old
+*/
+.margin-bot {
+  margin-bottom: 16px
+}
+
+.marg-top {
+  margin-top: 16px;
+}
+
+.marg-top30 {
+  margin-top: 30px;
+}
+
+.margin-bot-l {
+  margin-bottom: 32px
+}
+
+.bold {
+  font-weight: bold;
+}
+
+a > img {
+  border: 0;
+}
+
+.table {
+  display: table;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+.button, a.button, a.button:visited {
+  background-color: $color-ergo-red;
+  border-radius: 30px;
+  color: $color-white;
+  display: inline-block;
+  font-size: 18px;
+  letter-spacing: -.25px;
+  line-height: 1;
+  margin: 0 5px;
+  padding: 11px 19px;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.button:hover, .wrapper a.button:hover, .button:active, .wrapper a.button:active, .button:focus, .wrapper a.button:focus {
+  background: $color-ergo-red;
+  color: $color-white;
+  text-decoration: none;
+}
+
+.button-contact, a.button-contact, a.button-contact:visited {
+  margin-top: 16px;
+}
+
+
+
+/**
+* Tooltip Styles
+*/
+
+/* Add this attribute to the element that needs a tooltip */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -95px;
+  padding: 7px;
+  width: 180px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: $color-black;
+  background-color: rgba(235, 230, 216, 1);
+  color: rgba(84, 82, 65, 1);
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+  -webkit-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid $color-black;
+  border-top: 5px solid rgba(84, 82, 65, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+
+
+/**
+* Accordion
+*/
+.accordion-head {
+  input {
+    display: none;
+  }
+}
+
+
+
+/**
+* SM
+*/
+@media only screen and (max-width: 767px) {
+  .hidden-sm {
+    display: none !important;
+  }
+
+  .content-wrap {
+    .col2 {
+      display: block;
+
+      .left {
+        margin-right: 0;
+        max-width: 100%;
+        min-width: 100%;
+      }
+
+      .right {
+        display: inline-block;
+        max-width: 100%;
+        min-width: 100%;
+
+        .benefits {
+          margin: 18px 0 28px;
+        }
+
+        img.logo {
+          margin-top: 20px;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
+
+
+/**
+* XS
+*/
+@media only screen and (max-width: 575px) {
+  .hidden-xs {
+    display: none !important;
+  }
+
+
+
+  /**
+  * Accordion
+  */
+  .accordion-head {
+    border-bottom: 2px solid $color-content-highlight;
+
+    .accordion-content {
+      box-sizing: border-box;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 1s;
+    }
+
+    label.subline {
+      color: $color-black;
+      display: block;
+      padding: 20px 70px 20px 0;
+      position: relative;
+
+      &:before {
+        content: "";
+        font-size: 40px;
+        font-weight: 100;
+        position: absolute;
+        right: 24px;
+        transition: all 0.4s;
+        top: 14px;
+        transform: rotate(-45deg);
+        width: 20px;
+        height: 20px;
+        border-left: 1px solid $color-black;
+        display: block;
+      }
+
+      &:after {
+        content: "";
+        font-size: 40px;
+        font-weight: 100;
+        position: absolute;
+        right: 25px;
+        transition: all 0.4s;
+        top: 14px;
+        transform: rotate(45deg);
+        width: 20px;
+        height: 20px;
+        border-right: 1px solid $color-black;
+        display: block;
+      }
+    }
+
+    input:checked {
+      &~.accordion-content {
+        max-height: 2000px;
+      }
+
+      &~label:before {
+        right: 25px;
+        transform: rotate(135deg);
+      }
+
+      &~label:after {
+        right: 24px;
+        transform: rotate(225deg);
+      }
+    }
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 30px 30px;
+  }
+
+  html, body {
+    width: auto;
+    height: 297mm;
+  }
+
+  .print {
+    display: inherit !important;
+  }
+
+  .noprint {
+    display: none !important;
+  }
+
+  .pagebreak {
+    page-break-before: auto;
+    page-break-inside: avoid;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .wrapper {
+    margin: unset;
+    max-width: unset;
+    min-width: unset;
+  }
+
+  .color-primary, .color-secondary {
+    background: none !important;
+  }
+
+  .print-pt0 {
+    padding-top: 0;
+  }
+
+  .jobad-headerimage {
+    display: none;
+  }
+
+  .ithink {
+    font-family: 'FS Me';
+    font-size: 50px;
+    left: 3.7%;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  .content-wrap {
+    font-size: 16px;
+
+    &.color-primary {
+      div, h2, a, a:visited, .subline, p, ul li {
+        color: $color-black;
+      }
+    }
+
+    h1 {
+      font-size: 33px;
+    }
+    .subtitle {
+      font-size: 33px;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    .introtext {
+      font-size: 16px;
+    }
+
+    hr {
+      border-top: 2px solid $color-black;
+    }
+  }
+
+  .jobad-title-box {
+    background: #9c9d9d repeat !important;
+  }
+
+  .content-wrap h2,
+  .content-wrap a,
+  .content-wrap a:visited,
+  .content-wrap .subline {
+    color: black;
+  }
+
+  .content-wrap .col2 .right .benefits span {
+    display: inherit;
+    height: auto;
+    text-align: left;
+    width: 100%;
+
+    img {
+      display: none;
+    }
+
+    .print {
+      display: block;
+      float: left;
+      hyphens: auto;
+    }
+
+    .print:before {
+      content: url('../images/jobAds/ergoDynamic/print_hook.png');
+      display: block;
+      float: left;
+      margin-right: 5px;
+      margin-left: -22px;
+    }
+  }
+
+  .right .logo {
+    position: absolute;
+  }
+}

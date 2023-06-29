@@ -1,0 +1,12 @@
+@import "variables";
+
+$color-brand:                      #71022e; // Ergo Dunkelrot Dunkler (Hover von ergo.com)
+$color-brand-highlight:            #8e0038; // Ergo Dunkelrot
+$color-brand-text:                 #ffffff;
+$color-headline:                   #bf1528; // erg-primary-red-100
+$color-brand-background:           $color-content;
+$color-brand-secondary:            $color-brand-background;
+$color-brand-secondary-highlight:  $color-content-hover;
+$color-caret:                      $color-headline;
+$color-bg-content:                 $color-brand-text;
+$color-page-title:                 $color-bg-content;

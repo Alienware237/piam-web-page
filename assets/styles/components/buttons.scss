@@ -1,0 +1,42 @@
+/* Custom button styles */
+.button {
+  background: $color-brand-highlight;
+  color: $color-brand-text;
+  padding: 8px 25px;
+  font-size: 18px;
+  letter-spacing: -0.25px;
+  border: 0;
+  line-height: 1;
+  display: inline-block;
+  text-align: center;
+  border-radius: 30px; // buttons with height <= 60px will be displayed as pills, like ergo.com
+
+  @include transition($btn-transition);
+
+  cursor: pointer;
+  box-shadow: none;
+
+  @include hover-focus {
+    background: $color-brand;
+    color: $white;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  &.btn-secondary {
+    background: $color-brand-secondary;
+    @include hover-focus {
+      color: $color-brand-text;
+      background: $color-brand-secondary-highlight;
+      box-shadow: none !important;
+    }
+  }
+
+  &.arrow-link {
+    &.toggle {
+      &:before {
+        @include transform(rotate(135deg));
+      }
+    }
+  }
+}

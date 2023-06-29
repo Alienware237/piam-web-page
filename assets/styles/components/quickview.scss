@@ -1,0 +1,22 @@
+.btn-box {
+  text-align: left;
+
+  .button {
+    padding: 11px 19px 11px 35px;
+
+    &:before {
+      left: 18px;
+      right: inherit;
+    }
+  }
+
+  &:before {
+    background: none;
+  }
+}
+
+.published-at {
+  p.text-right {
+    font-size: 0.95em;
+  }
+}

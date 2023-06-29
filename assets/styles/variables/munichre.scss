@@ -1,0 +1,12 @@
+@import "variables";
+
+$color-brand:                      #333;
+$color-brand-highlight:            lighten($color-brand, 50%);
+$color-brand-text:                 #ffffff;
+$color-headline:                   #007f92;
+$color-brand-background:           #007f92;
+$color-brand-secondary:            $color-brand-background;
+$color-brand-secondary-highlight:  $color-content-hover;
+$color-caret:                      $color-headline;
+$color-bg-content:                 $color-brand-text;
+$color-page-title:                 $color-bg-content;
