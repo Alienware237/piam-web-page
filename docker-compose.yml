@@ -20,6 +20,7 @@ services:
       - "8093:80"
   php:
     build:
+      context: .
       dockerfile: ./php_helper/Dockerfile
     volumes:
       - .:/opt/project
@@ -28,6 +29,7 @@ services:
 
   runner:
     build:
+      context: .
       dockerfile: ./php_helper/Dockerfile
     volumes:
       - .:/opt/project

@@ -1,14 +1,14 @@
 @import "../components/mixins";
 @import "../components/fonts";
 @import "~font-awesome/scss/font-awesome";
-@import "../bootstrap/bootstrap_global";
+@import "../../templates/styles/bootstrap/bootstrap_global";
 
 body#pwrk-jobboard {
   margin: 0;
 }
 
 #pwrk-jobboard-main {
-  @import "../bootstrap/bootstrap";
+  @import "../../templates/styles/bootstrap/bootstrap";
   @import "~malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css";
 
   @import "../components/content";

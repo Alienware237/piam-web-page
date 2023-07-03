@@ -6,93 +6,65 @@
         .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
         {{ source('./styles/test.scss') }}
     </style>
-    <link href="{{asset('css/style.css')}}">
-    <link href="../../assets/css/style.scss" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
 {% endblock %}
 
 {% block title %}Hello IndexController!{% endblock %}
 
 
 {% block body %}
+    <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="51">
+        <!-- Spinner Start -->
+        <!-- Spinner End -->
 
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close">
-                <span class="icofont-close js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
 
-    <nav class="site-nav">
-        <div class="container">
-            <div class="menu-bg-wrap">
-                <div class="site-navigation">
-                    <a href="index.html" class="logo m-0 float-start">Property</a>
+        <!-- Navbar Start -->
+        {% include 'Components/navbar1.html.twig' %}
+        <!-- Navbar End -->
 
-                    <ul
-                            class="js-clone-nav d-none d-lg-inline-block text-start site-menu float-end"
-                    >
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li class="has-children">
-                            <a href="properties.html">Properties</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Buy Property</a></li>
-                                <li><a href="#">Sell Property</a></li>
-                                <li class="has-children">
-                                    <a href="#">Dropdown</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Sub Menu One</a></li>
-                                        <li><a href="#">Sub Menu Two</a></li>
-                                        <li><a href="#">Sub Menu Three</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+        {% include 'Components/header1.html.twig' %}
 
-                    <a
-                            href="#"
-                            class="burger light me-auto float-end mt-1 site-menu-toggle js-menu-toggle d-inline-block d-lg-none"
-                            data-toggle="collapse"
-                            data-target="#main-navbar"
-                    >
-                        <span></span>
-                    </a>
+        <!-- Video Modal Start -->
+        <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 16:9 aspect ratio -->
+                        <div class="ratio ratio-16x9">
+                            <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
+                                    allow="autoplay"></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
+        <!-- Video Modal End -->
 
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ '/opt/project/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-            <li>Your template at <code><a href="{{ '/opt/project/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-        </ul>
-    </div>
 
-    <div class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </body>
 {% endblock %}
