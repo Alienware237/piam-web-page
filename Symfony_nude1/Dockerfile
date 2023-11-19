@@ -24,3 +24,5 @@ RUN a2dismod mpm_prefork && a2enmod mpm_event
 
 RUN a2enmod rewrite proxy proxy_http proxy_http2 \
     && usermod -u $DOCKER_USERID www-data
+
+RUN service apache2 restart
