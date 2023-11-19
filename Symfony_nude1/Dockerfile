@@ -29,7 +29,7 @@ RUN docker-php-source extract \
 RUN a2dismod mpm_prefork && a2enmod mpm_event
 
 # Enable PHP module
-RUN a2enmod php8.1
+RUN a2enconf php8.1
 
 # Enable HTTP2
 RUN a2enmod http2
