@@ -18,9 +18,15 @@ RUN apt-get install -y \
     libicu-dev \
     libxslt-dev
 
-# Configure and install additional PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd mbstring xml intl xsl
+# Recompile PHP with thread safety enabled
+RUN docker-php-source extract \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
+    && docker-php-source delete \
+
+# Enable the event MPM
+RUN a2dismod mpm_prefork && a2enmod mpm_event
+
 # Install and enable Xdebug (if needed)
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
     && { \
@@ -31,10 +37,8 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug \
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-# Switch to the event MPM
-RUN a2dismod mpm_prefork && a2enmod mpm_event
-
 RUN a2enmod rewrite proxy proxy_http proxy_http2 \
     && usermod -u $DOCKER_USERID www-data
 
-RUN service apache2 restart
+# Gracefully restart Apache
+RUN apachectl graceful
