@@ -24,8 +24,9 @@ RUN docker-php-source extract \
     && docker-php-ext-install -j$(nproc) pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
     && docker-php-source delete
 
-# Disable prefork MPM and enable event MPM
-RUN a2dismod mpm_prefork && a2enmod mpm_event
+# Specify the event MPM
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
+    && sed -i 's/mpm_prefork/mpm_event/' /etc/apache2/apache2.conf
 
 # Install and enable Xdebug (if needed)
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
@@ -42,5 +43,5 @@ COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.con
 RUN a2enmod rewrite proxy proxy_http proxy_http2 \
     && usermod -u $DOCKER_USERID www-data
 
-# Gracefully restart Apache
-RUN apachectl graceful
+# Restart Apache
+CMD ["apache2-foreground"]
