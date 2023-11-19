@@ -22,10 +22,14 @@ RUN apt-get install -y \
 RUN docker-php-source extract \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
-    && docker-php-source delete
+    && docker-php-source delete \
+    && docker-php-ext-enable opcache
 
 # Disable prefork and enable event MPM
 RUN a2dismod mpm_prefork && a2enmod mpm_event
+
+# Enable PHP module
+RUN a2enmod php8.1
 
 # Enable HTTP2
 RUN a2enmod http2
