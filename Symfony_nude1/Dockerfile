@@ -39,6 +39,12 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug \
       echo "xdebug.client_port=9003"; \
     } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
+# Install PHP-FPM using libapache2-mod-fcgid
+RUN apt-get install -y libapache2-mod-fcgid
+
+# Enable PHP-FPM
+RUN a2enmod fcgid
+
 # Copy Symfony-compatible configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
