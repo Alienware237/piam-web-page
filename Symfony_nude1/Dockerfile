@@ -25,8 +25,8 @@ RUN docker-php-source extract \
     && docker-php-source delete
 
 # Specify the event MPM
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf \
-    && sed -i 's/mpm_prefork/mpm_event/' /etc/apache2/apache2.conf
+RUN echo "ServerName localhost" >> /etc/apache/000-default.conf \
+    && sed -i 's/mpm_prefork/mpm_event/' /etc/apache/000-default.conf
 
 # Install and enable Xdebug (if needed)
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
