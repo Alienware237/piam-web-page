@@ -28,8 +28,12 @@ RUN docker-php-source extract \
 # Disable prefork and enable event MPM
 RUN a2dismod mpm_prefork && a2enmod mpm_event
 
-# Enable PHP module
-RUN a2enconf php8.1
+# Install the Apache PHP module for PHP 8.1
+RUN apt-get update && \
+    apt-get install -y libapache2-mod-php8.1
+
+# Enable the PHP 8.1 module
+RUN a2enmod php8.1
 
 # Enable HTTP2
 RUN a2enmod http2
