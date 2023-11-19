@@ -1,21 +1,30 @@
 FROM php:8.1-apache
 ARG DOCKER_USERID="1000"
 
-# php Packete die wir in der Regel Brauchen
-RUN apt-get update \
-    && apt-get install -y libzip-dev unzip libpq-dev librabbitmq-dev libz-dev libmemcached-dev \
-    && pecl install amqp memcached \
-    && docker-php-ext-enable amqp memcached \
-    && docker-php-ext-install pdo mysqli pdo_mysql zip
+# Install development tools and libraries for PHP compilation
+RUN apt-get install -y \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    libicu-dev \
+    libxslt-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd mbstring xml intl xsl
 
-# Installation des Debugers für PHP
+# Recompile PHP with thread safety enabled
+RUN docker-php-source extract \
+    && docker-php-ext-install -j$(nproc) pdo mysqli pdo_mysql zip \
+    && docker-php-source delete
+
+# Install and enable Xdebug (if needed)
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
     && { \
       echo "xdebug.mode=debug"; \
       echo "xdebug.client_host=host.docker.internal"; \
       echo "xdebug.client_port=9003"; \
     } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
