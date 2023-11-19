@@ -24,8 +24,11 @@ RUN docker-php-source extract \
     && docker-php-ext-install -j$(nproc) pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
     && docker-php-source delete
 
-# Specify the event MPM and enable HTTP2
-RUN sed -i -e 's/mpm_prefork/mpm_event/' -e '/<IfModule mpm_event_module>/a Protocols h2 http/1.1' /etc/apache2/sites-available/000-default.conf
+# Disable prefork and enable event MPM
+RUN a2dismod mpm_prefork && a2enmod mpm_event
+
+# Enable HTTP2
+RUN a2enmod http2
 
 # Install and enable Xdebug (if needed)
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
