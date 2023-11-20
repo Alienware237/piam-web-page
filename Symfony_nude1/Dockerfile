@@ -26,10 +26,10 @@ RUN docker-php-source extract \
     && docker-php-ext-enable opcache
 
 # Install PHP-FPM using libapache2-mod-fcgid
-#RUN apt-get install -y libapache2-mod-fcgid
+RUN apt-get install -y libapache2-mod-fcgid
 
 # Install PHP-FPM for PHP 8.1
-RUN apt-get install -y php-fpm8.1
+#RUN apt-get install -y php-fpm8.1
 
 # Enable PHP-FPM
 RUN a2enconf php-fpm8.1
