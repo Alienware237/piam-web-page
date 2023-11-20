@@ -30,7 +30,7 @@ RUN docker-php-source extract \
 
 # Update package information and install PHP-FPM
 RUN apt-get update \
-    && apt-get install -y php-fpm
+    && apt-get install -y php8.2-fpm
 
 # Enable PHP-FPM
 RUN a2enconf php-fpm8.1
