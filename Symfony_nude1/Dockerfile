@@ -25,28 +25,22 @@ RUN docker-php-source extract \
     && docker-php-source delete \
     && docker-php-ext-enable opcache
 
-# Disable prefork and enable event MPM
-RUN a2dismod mpm_prefork && a2enmod mpm_event
-
-# Enable HTTP2
-RUN a2enmod http2
-
-# Install and enable Xdebug (if needed)
-RUN pecl install xdebug && docker-php-ext-enable xdebug \
-    && { \
-      echo "xdebug.mode=debug"; \
-      echo "xdebug.client_host=host.docker.internal"; \
-      echo "xdebug.client_port=9003"; \
-    } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-
-# Install PHP-FPM using libapache2-mod-fcgid
-RUN apt-get install -y libapache2-mod-fcgid
+# Install PHP-FPM for PHP 8.1
+RUN apt-get install -y php8.1-fpm
 
 # Enable PHP-FPM
-RUN a2enmod fcgid
+RUN a2enconf php8.1-fpm
 
-# Copy Symfony-compatible configuration
-COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+# Enable proxy_fcgi
+RUN a2enmod proxy_fcgi
+
+# Configure Apache to use proxy_fcgi
+RUN { \
+      echo "<FilesMatch \.php$>"; \
+      echo "  SetHandler \"proxy:fcgi://127.0.0.1:9000\""; \
+      echo "</FilesMatch>"; \
+    } > /etc/apache2/conf-available/php-fpm.conf \
+    && a2enconf php-fpm.conf
 
 # Enable necessary Apache modules and adjust user ID
 RUN a2enmod rewrite proxy proxy_http proxy_http2 \
