@@ -33,8 +33,7 @@ RUN apt-get update \
     && apt-get update
 
 # Enable PHP-FPM and proxy_fcgi
-RUN a2enconf php-fpm8.2 \
-    && a2enmod proxy_fcgi
+RUN apt install php8.1-fpm
 
 # Configure Apache to use proxy_fcgi
 RUN { \
