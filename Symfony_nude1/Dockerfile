@@ -25,23 +25,27 @@ RUN docker-php-source extract \
     && docker-php-source delete \
     && docker-php-ext-enable opcache
 
-# Install PHP-FPM using libapache2-mod-fcgid
-#RUN apt-get install -y libapache2-mod-fcgid
-
-# Update package information and install PHP-FPM
+# Install PHP 7.4 and PHP 8.0
 RUN apt-get update \
-    && apt-get install -y php8.2-fpm
+    && apt-get install -y \
+        php7.4 php7.4-bcmath php7.4-cli php7.4-common php7.4-curl php7.4-dev php7.4-fpm \
+        php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-mbstring php7.4-mysql \
+        php7.4-opcache php7.4-readline php7.4-soap php7.4-sqlite3 php7.4-tidy php7.4-xsl php7.4-zip \
+        php8.0 php8.0-bcmath php8.0-cli php8.0-common php8.0-curl php8.0-dev php8.0-fpm \
+        php8.0-gd php8.0-imap php8.0-intl php8.0-mbstring php8.0-mysql php8.0-opcache \
+        php8.0-readline php8.0-soap php8.0-sqlite3 php8.0-tidy php8.0-xml php8.0-xsl php8.0-zip
 
-# Enable PHP-FPM
-RUN a2enconf php-fpm8.1
-
-# Enable proxy_fcgi
-RUN a2enmod proxy_fcgi
+# Enable PHP-FPM and proxy_fcgi
+RUN a2enconf php-fpm7.4 php-fpm8.0 \
+    && a2enmod proxy_fcgi
 
 # Configure Apache to use proxy_fcgi
 RUN { \
       echo "<FilesMatch \.php$>"; \
-      echo "  SetHandler \"proxy:fcgi://127.0.0.1:9000\""; \
+      echo "  SetHandler \"proxy:fcgi://127.0.0.1:9074\""; \
+      echo "</FilesMatch>"; \
+      echo "<FilesMatch \.php$>"; \
+      echo "  SetHandler \"proxy:fcgi://127.0.0.1:9080\""; \
       echo "</FilesMatch>"; \
     } > /etc/apache2/conf-available/php-fpm.conf \
     && a2enconf php-fpm.conf
