@@ -25,7 +25,7 @@ RUN apt-get update \
 
 RUN apt-get update \
     && apt install software-properties-common \
-    && add-apt.repository -y ppa:ondrej/php \
+    && add-apt.repository --assume-yes ppa:ondrej/php \
     && apt update \
     && apt-get install -y php8.1-fpm php8.1-mysql
 
