@@ -23,6 +23,9 @@ RUN apt-get update \
     && curl -sSL -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
     && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
     && apt-get update \
+    && apt install software-properties-common \
+    && add-apt.repository ppa:ondrej/php \
+    && apt update \
     && apt-get install -y php8.1-fpm php8.1-mysql
 
 # Install Nginx
