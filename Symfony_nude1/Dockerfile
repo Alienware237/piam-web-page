@@ -1,4 +1,5 @@
-FROM php:8.1-apache
+FROM php:8.1-fpm
+
 ARG DOCKER_USERID="1000"
 
 # Install required dependencies for PHP compilation
@@ -6,23 +7,7 @@ RUN apt-get update \
     && apt-get install -y libzip-dev unzip libpq-dev librabbitmq-dev libz-dev libmemcached-dev \
     && pecl install amqp memcached \
     && docker-php-ext-enable amqp memcached \
-    && docker-php-ext-install pdo mysqli pdo_mysql zip
-
-# Install development tools and libraries for PHP compilation
-RUN apt-get install -y \
-    libfreetype6-dev \
-    libjpeg-dev \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libicu-dev \
-    libxslt-dev
-
-# Recompile PHP with thread safety enabled
-RUN docker-php-source extract \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
-    && docker-php-source delete \
+    && docker-php-ext-install pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
     && docker-php-ext-enable opcache
 
 # Install PHP 7.4 and PHP 8.0
@@ -33,23 +18,20 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y php8.1-fpm php8.1-mysql
 
-# Enable PHP-FPM and proxy_fcgi
+# Install Nginx
+RUN apt-get install -y nginx
+
+# Enable PHP-FPM
 RUN a2enconf php8.1-fpm
 
-# Configure Apache to use proxy_fcgi
-RUN { \
-      echo "<FilesMatch \.php$>"; \
-      echo "  SetHandler \"proxy:fcgi://127.0.0.1:9074\""; \
-      echo "</FilesMatch>"; \
-      echo "<FilesMatch \.php$>"; \
-      echo "  SetHandler \"proxy:fcgi://127.0.0.1:9080\""; \
-      echo "</FilesMatch>"; \
-    } > /etc/apache2/conf-available/php-fpm.conf \
-    && a2enconf php-fpm
+# Configure Nginx to use PHP-FPM
+COPY docker/nginx/default.conf /etc/nginx/sites-available/default
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-# Enable necessary Apache modules and adjust user ID
-RUN a2enmod rewrite proxy proxy_http proxy_http2 \
-    && usermod -u $DOCKER_USERID www-data
+# Enable necessary Nginx modules
+RUN service nginx start
 
-# Restart Apache
-CMD ["apache2-foreground"]
+# Set up www-data user
+RUN usermod -u $DOCKER_USERID www-data
+
+CMD ["nginx", "-g", "daemon off;"]
