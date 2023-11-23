@@ -24,7 +24,7 @@ RUN apt-get update \
     && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
     && apt-get update \
     && apt install software-properties-common \
-    && add-apt.repository ppa:ondrej/php \
+    && add-apt.repository ppa:ondrej/php -y \
     && apt update \
     && apt-get install -y php8.1-fpm php8.1-mysql
 
