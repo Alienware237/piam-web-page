@@ -4,7 +4,7 @@ ARG DOCKER_USERID="1000"
 
 # Install required dependencies for PHP compilation
 RUN apt-get update \
-    && apt-get install -y libzip-dev unzip libpq-dev librabbitmq-dev libz-dev libmemcached-dev \
+    && apt-get install -y libzip-dev unzip libpq-dev librabbitmq-dev libz-dev libmemcached-dev libpng-dev \
     && pecl install amqp memcached \
     && docker-php-ext-enable amqp memcached \
     && docker-php-ext-install pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
