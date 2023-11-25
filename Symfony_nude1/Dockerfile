@@ -7,6 +7,16 @@ RUN apt-get update \
     && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev \
     && apt-get install -y libmemcached-dev libmemcached11
 
+# Install memcached extension with specified libmemcached directory
+RUN pecl install memcached \
+    && docker-php-ext-enable memcached \
+    && { \
+      echo "extension=memcached.so"; \
+    } >> /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini
+
+# Install required PHP extensions
+RUN docker-php-ext-install pdo zip
+
 # Install xdebug
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
@@ -18,16 +28,6 @@ RUN pecl install xdebug \
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install memcached extension with specified libmemcached directory
-RUN pecl install memcached \
-    && docker-php-ext-enable memcached \
-    && { \
-      echo "extension=memcached.so"; \
-    } >> /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini
-
-# Install required PHP extensions
-RUN docker-php-ext-install pdo zip
 
 # Set working directory
 WORKDIR /usr/src/app/piam-web-page
