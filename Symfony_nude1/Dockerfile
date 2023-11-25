@@ -1,11 +1,7 @@
 FROM php:7.2-cli AS build
 ARG DOCKER_USERID="1000"
 
-RUN apt-get update \
-    && apt-get install -y libzip-dev unzip libpq-dev librabbitmq-dev libz-dev libmemcached-dev libmcrypt-dev \
-    && pecl install amqp memcached \
-    && docker-php-ext-enable amqp memcached \
-    && docker-php-ext-install pdo mysqli pdo_mysql zip
+RUN apt-get update -y && apt-get install -y libmcrypt-dev
 
 RUN pecl install xdebug && docker-php-ext-enable xdebug \
     && { \
