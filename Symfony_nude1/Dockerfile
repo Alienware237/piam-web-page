@@ -20,8 +20,6 @@ RUN a2dismod mpm_prefork
 
 RUN a2enmod mpm_event
 
-RUN apt remove mod_php -y
-
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
