@@ -3,7 +3,7 @@ FROM php:8.2-cli AS build
 ARG DOCKER_USERID="1000"
 
 # Install required dependencies
-RUN apt-get update -y && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev
+RUN apt-get update -y && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev libmemcached-dev
 
 # Install xdebug
 RUN pecl install xdebug \
@@ -17,9 +17,12 @@ RUN pecl install xdebug \
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install memcached extension
+# Install memcached extension with specified libmemcached directory
 RUN pecl install memcached \
-    && docker-php-ext-enable memcached
+    && docker-php-ext-enable memcached \
+    && { \
+      echo "extension=memcached.so"; \
+    } >> /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini
 
 # Install required PHP extensions
 RUN docker-php-ext-install pdo zip
