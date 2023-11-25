@@ -1,4 +1,4 @@
-FROM php:7.2-cli AS build
+FROM php:8.2-cli AS build
 ARG DOCKER_USERID="1000"
 
 RUN apt-get update -y && apt-get install -y libmcrypt-dev
