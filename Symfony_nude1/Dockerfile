@@ -17,13 +17,19 @@ RUN apt-get update \
     && docker-php-ext-install pdo mysqli pdo_mysql zip gd mbstring xml intl xsl \
     && docker-php-ext-enable opcache
 
-# Install PHP 7.4 and PHP 8.0
+# Install PHP 8.0 and PHP 8.1
 RUN apt-get update \
-    && apt-get -y install apt-transport-https lsb-release ca-certificates curl \
+    && apt-get install -y apt-transport-https lsb-release ca-certificates curl software-properties-common \
     && curl -sSL -o /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
-    && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
-    && apt update \
-    && apt-get install -y php8.1-fpm php8.1-mysql \
+    && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list \
+    && apt-get update \
+    && apt-get install -y php8.1 php8.0
+
+# Install required extensions for PHP 8.1
+RUN apt-get install -y php8.1-fpm php8.1-mysql
+
+# Install required extensions for PHP 8.0
+RUN apt-get install -y php8.0-fpm php8.0-mysql
 
 # Install Nginx
 RUN apt-get install -y nginx
