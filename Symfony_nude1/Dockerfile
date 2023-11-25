@@ -5,10 +5,9 @@ ARG DOCKER_USERID="1000"
 # Install required dependencies
 RUN apt-get update \
     && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev \
-    && apt-get install -y libmemcached-dev libmemcached11
-
-# Install memcached extension with specified libmemcached directory
-RUN pecl install memcached \
+    && apt-get install -y libmemcached-dev libmemcached11 \
+    # Install memcached extension with specified libmemcached directory \
+    && pecl install memcached \
     && docker-php-ext-enable memcached \
     && { \
       echo "extension=memcached.so"; \
@@ -17,14 +16,21 @@ RUN pecl install memcached \
 # Install required PHP extensions
 RUN docker-php-ext-install pdo zip
 
-# Install xdebug
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug \
+# Install libmemcached from source
+RUN mkdir -p /usr/src/libmemcached \
+    && curl -SL https://launchpad.net/libmemcached/1.0/1.0.16/+download/libmemcached-1.0.16.tar.gz \
+    | tar -xzC /usr/src/libmemcached --strip-components=1 \
+    && cd /usr/src/libmemcached \
+    && ./configure \
+    && make \
+    && make install
+
+# Install php-memcached from source
+RUN pecl install memcached-2.1.0 \
+    && docker-php-ext-enable memcached \
     && { \
-      echo "xdebug.mode=debug"; \
-      echo "xdebug.client_host=host.docker.internal"; \
-      echo "xdebug.client_port=9003"; \
-    } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      echo "extension=memcached.so"; \
+    } >> /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
