@@ -14,8 +14,7 @@ RUN docker-php-ext-install pdo zip
 RUN mkdir -p /usr/src/libmemcached \
     && curl -SL https://launchpad.net/libmemcached/1.0/1.0.16/+download/libmemcached-1.0.16.tar.gz \
     | tar -xzC /usr/src/libmemcached --strip-components=1 \
-    && cd /usr/src/libmemcached \
-    && make install
+    && cd /usr/src/libmemcached
 
 # Install php-memcached from source
 RUN pecl install memcached-2.1.0 \
