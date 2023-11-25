@@ -16,6 +16,10 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug \
       echo "xdebug.client_port=9003"; \
     } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
+RUN a2dismod mpm_prefork
+
+RUN a2enmod mpm_event
+
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
