@@ -6,12 +6,6 @@ ARG DOCKER_USERID="1000"
 RUN apt-get update \
     && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev \
     && apt-get install -y libmemcached-dev libmemcached11 \
-    # Install memcached extension with specified libmemcached directory \
-    && pecl install memcached \
-    && docker-php-ext-enable memcached \
-    && { \
-      echo "extension=memcached.so"; \
-    } >> /usr/local/etc/php/conf.d/docker-php-ext-memcached.ini
 
 # Install required PHP extensions
 RUN docker-php-ext-install pdo zip
