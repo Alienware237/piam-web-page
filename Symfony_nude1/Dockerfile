@@ -15,7 +15,6 @@ RUN mkdir -p /usr/src/libmemcached \
     && curl -SL https://launchpad.net/libmemcached/1.0/1.0.16/+download/libmemcached-1.0.16.tar.gz \
     | tar -xzC /usr/src/libmemcached --strip-components=1 \
     && cd /usr/src/libmemcached \
-    && ./configure \
     && make install
 
 # Install php-memcached from source
