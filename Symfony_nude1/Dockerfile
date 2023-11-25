@@ -3,7 +3,9 @@ FROM php:8.2-cli AS build
 ARG DOCKER_USERID="1000"
 
 # Install required dependencies
-RUN apt-get update -y && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev libmemcached-dev
+RUN apt-get update \
+    && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev \
+    && apt-get install libmemcached-dev libmemcached11
 
 # Install xdebug
 RUN pecl install xdebug \
