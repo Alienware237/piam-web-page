@@ -16,7 +16,6 @@ RUN mkdir -p /usr/src/libmemcached \
     | tar -xzC /usr/src/libmemcached --strip-components=1 \
     && cd /usr/src/libmemcached \
     && ./configure \
-    && make \
     && make install
 
 # Install php-memcached from source
