@@ -11,7 +11,7 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug \
     } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-RUN docker-php-ext-install pdo mbstring
+RUN docker-php-ext-install pdo
 
 WORKDIR /usr/src/app/piam-web-page
 COPY . .
