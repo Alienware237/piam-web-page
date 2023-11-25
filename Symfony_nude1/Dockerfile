@@ -17,7 +17,7 @@ RUN mkdir -p /usr/src/libmemcached \
     && cd /usr/src/libmemcached
 
 # Install php-memcached from source
-RUN pecl install memcached-2.1.0 \
+RUN pecl install memcached \
     && docker-php-ext-enable memcached \
     && { \
       echo "extension=memcached.so"; \
