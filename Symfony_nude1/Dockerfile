@@ -5,7 +5,8 @@ ARG DOCKER_USERID="1000"
 # Install required dependencies
 RUN apt-get update \
     && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev \
-    && apt-get install -y libmemcached-dev memcached libmemcached11
+    && apt-get install -y libmemcached-dev memcached libmemcached11 \
+    && docker-php-ext-enable memcached \
 
 # Install required PHP extensions
 RUN docker-php-ext-install pdo zip
