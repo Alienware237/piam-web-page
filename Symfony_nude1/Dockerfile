@@ -20,6 +20,9 @@ WORKDIR /usr/src/app/piam-web-page
 # Copy application files
 COPY . .
 
+# Set COMPOSER_ALLOW_SUPERUSER to enable plugins in non-interactive mode
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 # Install dependencies using Composer
 RUN composer install --ignore-platform-reqs
 
