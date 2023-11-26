@@ -1,5 +1,5 @@
 # Stage 1: Build Stage
-FROM php:8.2-cli AS build
+FROM php:8.2-fpm AS build
 ARG DOCKER_USERID="1000"
 
 # Install required dependencies
