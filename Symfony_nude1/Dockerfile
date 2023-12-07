@@ -26,6 +26,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Install dependencies using Composer
 RUN composer install --ignore-platform-reqs
 
+# install valet
+RUN valet install
+
 # Stage 2: Production Stage
 FROM nginx:1.15.8-alpine
 
