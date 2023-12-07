@@ -27,3 +27,12 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --ignore-platform-reqs
 
 EXPOSE 8000
+
+# Stage 2: Production Stage
+FROM nginx:1.15.8-alpine
+
+# Copy NGINX configuration
+COPY ../docker/nginx/default.conf /etc/nginx/nginx.conf
+
+# Copy the built application from the build stage
+COPY --from=build /usr/src/app/piam-web-page /usr/share/nginx/html
