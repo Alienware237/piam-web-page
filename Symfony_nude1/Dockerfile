@@ -15,7 +15,7 @@ RUN docker-php-ext-install pdo zip
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set working directory
-WORKDIR /usr/src/app/piam-web-page
+WORKDIR /var/www/html
 
 # Copy application files
 COPY . .
@@ -25,6 +25,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Install dependencies using Composer
 RUN composer install --ignore-platform-reqs
+
+RUN find /path/to/your/symfony/app -type d -exec chmod 755 {} \
+RUN find /path/to/your/symfony/app -type f -exec chmod 644 {} \
 
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
