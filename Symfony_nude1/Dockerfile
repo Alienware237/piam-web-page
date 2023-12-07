@@ -26,6 +26,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Install dependencies using Composer
 RUN composer install --ignore-platform-reqs
 
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/var
+
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
