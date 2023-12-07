@@ -26,4 +26,7 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 # Install dependencies using Composer
 RUN composer install --ignore-platform-reqs
 
+# die zu Synfony passende Configuration
+COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+
 EXPOSE 8000
