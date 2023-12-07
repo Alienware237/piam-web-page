@@ -27,5 +27,3 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN composer install --ignore-platform-reqs
 
 EXPOSE 8000
-CMD php bin/console server:run 0.0.0.0:8000
-
