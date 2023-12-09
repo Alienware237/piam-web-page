@@ -3,13 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
+        <meta content="Digital, web page" name="keywords">
+        <meta content="piam, web page, digital" name="description">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="icon" href="{{ asset('img/logo/TDA-logo.jpg')}}" type="image/jpeg">
 
         <!-- Favicon -->
         <link href="{{ asset('img/favicon.ico') }}" rel="icon">
+        <!-- Open Graph meta tags for link preview -->
+        <meta property="og:title" content="Talom Digital Art">
+        <meta property="og:description" content=" we create an attractive and consistent visual aesthetic that reflects the brand's identity and captures visitors' attention.">
+        <meta property="og:image" content="{{ asset('img/team-5.png') }}">
+        <meta property="og:url" content="https://piam-web-page.onrender.com/index.php/index">
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
