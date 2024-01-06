@@ -1,23 +1,35 @@
-FROM php:8.1-apache
+# Stage 1: Build Stage
+FROM php:8.2-rc-apache AS build
 ARG DOCKER_USERID="1000"
 
-# php Packete die wir in der Regel Brauchen
+# Install required dependencies
 RUN apt-get update \
-    && apt-get install -y libzip-dev unzip libpq-dev librabbitmq-dev libz-dev libmemcached-dev \
-    && pecl install amqp memcached \
-    && docker-php-ext-enable amqp memcached \
-    && docker-php-ext-install pdo mysqli pdo_mysql zip
+    && apt-get install -y libmcrypt4 libmcrypt-dev zlib1g-dev libzip-dev \
+    && apt-get install -y libmemcached-dev memcached libmemcached11
 
-# Installation des Debugers für PHP
-RUN pecl install xdebug && docker-php-ext-enable xdebug \
-    && { \
-      echo "xdebug.mode=debug"; \
-      echo "xdebug.client_host=host.docker.internal"; \
-      echo "xdebug.client_port=9003"; \
-    } >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# Install required PHP extensions
+RUN docker-php-ext-install pdo zip
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy application files
+COPY . .
+
+# Set COMPOSER_ALLOW_SUPERUSER to enable plugins in non-interactive mode
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+# Install dependencies using Composer
+RUN composer install --ignore-platform-reqs
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/var
 
 # die zu Synfony passende Configuration
 COPY docker/apache/000-default.conf /etc/apache2/sites-available/000-default.conf
 
-RUN a2enmod rewrite proxy proxy_http proxy_http2 \
-    && usermod -u $DOCKER_USERID www-data
+EXPOSE 8000

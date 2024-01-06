@@ -1,0 +1,3 @@
+<?php //okpt%255Cmy%255Cweb%255Cpage%255CKernel%2523configureRoutes
+
+return [PHP_INT_MAX, []];

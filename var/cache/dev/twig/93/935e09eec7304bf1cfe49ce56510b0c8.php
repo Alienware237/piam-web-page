@@ -1,0 +1,438 @@
+<?php
+
+use Twig\Environment;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Extension\SandboxExtension;
+use Twig\Markup;
+use Twig\Sandbox\SecurityError;
+use Twig\Sandbox\SecurityNotAllowedTagError;
+use Twig\Sandbox\SecurityNotAllowedFilterError;
+use Twig\Sandbox\SecurityNotAllowedFunctionError;
+use Twig\Source;
+use Twig\Template;
+
+/* Components/skills.html.twig */
+class __TwigTemplate_b7565dcbf167ed8cdcc3aeabc608238d extends Template
+{
+    private $source;
+    private $macros = [];
+
+    public function __construct(Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->source = $this->getSourceContext();
+
+        $this->parent = false;
+
+        $this->blocks = [
+        ];
+    }
+
+    protected function doDisplay(array $context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "Components/skills.html.twig"));
+
+        // line 1
+        echo "<!-- Expertise Start -->
+<div class=\"container-xxl py-6 pb-5\" id=\"skill\">
+    <div class=\"container\">
+        <div class=\"row g-5\">
+            <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.1s\">
+                <h1 class=\"display-5 mb-5\">Skills & Experience</h1>
+                <p class=\"mb-4\">My last years have been based on acquiring knowledge and skills in these programming
+                    languages and tools that I believe are suitable or essential for a developer.</p>
+                <h3 class=\"mb-4\">My Skills</h3>
+                <div class=\"row align-items-center\">
+                    <div class=\"col-md-6\">
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">HTML</h6>
+                                <h6 class=\"font-weight-bold\">95%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-primary\" role=\"progressbar\" aria-valuenow=\"95\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">CSS</h6>
+                                <h6 class=\"font-weight-bold\">85%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-warning\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">PHP</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=\"col-md-6\">
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Javascript</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Angular JS</h6>
+                                <h6 class=\"font-weight-bold\">80%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"95\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Docker</h6>
+                                <h6 class=\"font-weight-bold\">82%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Symfony</h6>
+                                <h6 class=\"font-weight-bold\">85%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Database(Modeling and SQL)</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Git</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.5s\">
+                <ul class=\"nav nav-pills rounded border border-2 border-primary mb-5\">
+                    <li class=\"nav-item w-50\">
+                        <button class=\"nav-link w-100 py-3 fs-5 active\" data-bs-toggle=\"pill\" href=\"#tab-1\">Experience</button>
+                    </li>
+                    <li class=\"nav-item w-50\">
+                        <button class=\"nav-link w-100 py-3 fs-5\" data-bs-toggle=\"pill\" href=\"#tab-2\">Education</button>
+                    </li>
+                </ul>
+                <div class=\"tab-content\">
+                    <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
+                        <div class=\"row gy-5 gx-4\">
+                            <div class=\"col-sm-6\">
+                                <h5>Tradui Technologie</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">October 2023 - Now</p>
+                                <ul class=\"list-group\">
+                                    <li class=\"list-group-item\">Software developer for Reporting tools</li>
+                                </ul>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Personalwerk GmbH</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">March 2022 - September</p>
+                                <ul class=\"list-group\">
+                                    <li class=\"list-group-item\">Conceptualising, developing, maintaining and
+                                        maintenance of web applications and their
+                                        components necessary for operation
+                                        Support with rollout and implementation
+                                        of newly developed software</li>
+                                    <li class=\"list-group-item\">Support with installation, administration
+                                        monitoring and maintenance of Linux systems and applications</li>
+                                    <li class=\"list-group-item\">Further development of processes,
+                                        applications and tools</li>
+                                </ul>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Wer denkt was GmbH</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">February 2021 - February 2022</p>
+                                <ul class=\"list-group\">
+                                    <li class=\"list-group-item\">Development and testing of
+                                        software systems</li>
+                                    <li class=\"list-group-item\">Operation and administration of test and
+                                        productive systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=\"tab-2\" class=\"tab-pane fade show p-0\">
+                        <div class=\"row gy-5 gx-4\">
+                            <div class=\"col-sm-6\">
+                                <h5>Computer Science</h5>
+                                <h6 class=\"mb-0\">Graduation: Bachelor Computer Science</h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">September 2019 - April 2023</p>
+                                <h6 class=\"mb-0\">Technische Hochschule Mittelhessen</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Language course (German)</h5>
+                                <h6 class=\"mb-0\">Degree: German language test for university admission(DSH) </h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">October 2018 - August 2019</p>
+                                <h6 class=\"mb-0\">FH Frankfurt</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Secondary school</h5>
+                                <h6 class=\"mb-0\">Graduation: Abitur</h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">2009 – 2016</p>
+                                <h6 class=\"mb-0\">Lycée de Maképé (In douala/cameroon)</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Primary school</h5>
+                                <h6 class=\"mb-0\">Graduation: Primary school-leaving certificate(CEP)</h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">2003 - 2009</p>
+                                <h6 class=\"mb-0\">La Semence (In douala/cameroon)</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Kindergarten</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">2000 - 2003</p>
+                                <h6 class=\"mb-0\">La Semence (In douala/cameroon)</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Expertise End -->";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "Components/skills.html.twig";
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  40 => 1,);
+    }
+
+    public function getSourceContext()
+    {
+        return new Source("<!-- Expertise Start -->
+<div class=\"container-xxl py-6 pb-5\" id=\"skill\">
+    <div class=\"container\">
+        <div class=\"row g-5\">
+            <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.1s\">
+                <h1 class=\"display-5 mb-5\">Skills & Experience</h1>
+                <p class=\"mb-4\">My last years have been based on acquiring knowledge and skills in these programming
+                    languages and tools that I believe are suitable or essential for a developer.</p>
+                <h3 class=\"mb-4\">My Skills</h3>
+                <div class=\"row align-items-center\">
+                    <div class=\"col-md-6\">
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">HTML</h6>
+                                <h6 class=\"font-weight-bold\">95%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-primary\" role=\"progressbar\" aria-valuenow=\"95\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">CSS</h6>
+                                <h6 class=\"font-weight-bold\">85%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-warning\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">PHP</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=\"col-md-6\">
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Javascript</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"90\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Angular JS</h6>
+                                <h6 class=\"font-weight-bold\">80%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"95\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Docker</h6>
+                                <h6 class=\"font-weight-bold\">82%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Symfony</h6>
+                                <h6 class=\"font-weight-bold\">85%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-info\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Database(Modeling and SQL)</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                        <div class=\"skill mb-4\">
+                            <div class=\"d-flex justify-content-between\">
+                                <h6 class=\"font-weight-bold\">Git</h6>
+                                <h6 class=\"font-weight-bold\">90%</h6>
+                            </div>
+                            <div class=\"progress\">
+                                <div class=\"progress-bar bg-danger\" role=\"progressbar\" aria-valuenow=\"85\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=\"col-lg-6 wow fadeInUp\" data-wow-delay=\"0.5s\">
+                <ul class=\"nav nav-pills rounded border border-2 border-primary mb-5\">
+                    <li class=\"nav-item w-50\">
+                        <button class=\"nav-link w-100 py-3 fs-5 active\" data-bs-toggle=\"pill\" href=\"#tab-1\">Experience</button>
+                    </li>
+                    <li class=\"nav-item w-50\">
+                        <button class=\"nav-link w-100 py-3 fs-5\" data-bs-toggle=\"pill\" href=\"#tab-2\">Education</button>
+                    </li>
+                </ul>
+                <div class=\"tab-content\">
+                    <div id=\"tab-1\" class=\"tab-pane fade show p-0 active\">
+                        <div class=\"row gy-5 gx-4\">
+                            <div class=\"col-sm-6\">
+                                <h5>Tradui Technologie</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">October 2023 - Now</p>
+                                <ul class=\"list-group\">
+                                    <li class=\"list-group-item\">Software developer for Reporting tools</li>
+                                </ul>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Personalwerk GmbH</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">March 2022 - September</p>
+                                <ul class=\"list-group\">
+                                    <li class=\"list-group-item\">Conceptualising, developing, maintaining and
+                                        maintenance of web applications and their
+                                        components necessary for operation
+                                        Support with rollout and implementation
+                                        of newly developed software</li>
+                                    <li class=\"list-group-item\">Support with installation, administration
+                                        monitoring and maintenance of Linux systems and applications</li>
+                                    <li class=\"list-group-item\">Further development of processes,
+                                        applications and tools</li>
+                                </ul>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Wer denkt was GmbH</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">February 2021 - February 2022</p>
+                                <ul class=\"list-group\">
+                                    <li class=\"list-group-item\">Development and testing of
+                                        software systems</li>
+                                    <li class=\"list-group-item\">Operation and administration of test and
+                                        productive systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id=\"tab-2\" class=\"tab-pane fade show p-0\">
+                        <div class=\"row gy-5 gx-4\">
+                            <div class=\"col-sm-6\">
+                                <h5>Computer Science</h5>
+                                <h6 class=\"mb-0\">Graduation: Bachelor Computer Science</h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">September 2019 - April 2023</p>
+                                <h6 class=\"mb-0\">Technische Hochschule Mittelhessen</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Language course (German)</h5>
+                                <h6 class=\"mb-0\">Degree: German language test for university admission(DSH) </h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">October 2018 - August 2019</p>
+                                <h6 class=\"mb-0\">FH Frankfurt</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Secondary school</h5>
+                                <h6 class=\"mb-0\">Graduation: Abitur</h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">2009 – 2016</p>
+                                <h6 class=\"mb-0\">Lycée de Maképé (In douala/cameroon)</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Primary school</h5>
+                                <h6 class=\"mb-0\">Graduation: Primary school-leaving certificate(CEP)</h6>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">2003 - 2009</p>
+                                <h6 class=\"mb-0\">La Semence (In douala/cameroon)</h6>
+                            </div>
+                            <div class=\"col-sm-6\">
+                                <h5>Kindergarten</h5>
+                                <hr class=\"text-primary my-2\">
+                                <p class=\"text-primary mb-1\">2000 - 2003</p>
+                                <h6 class=\"mb-0\">La Semence (In douala/cameroon)</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Expertise End -->", "Components/skills.html.twig", "/opt/project/templates/Components/skills.html.twig");
+    }
+}
