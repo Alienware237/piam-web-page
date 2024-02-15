@@ -30,29 +30,29 @@
                 </div>
             </div>
             <div class="col-lg-7 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <form>
+                <form id="emailForm" action="{{ path('send_email') }}" method="post">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
                                 <label for="name">Your Name</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
                                 <label for="email">Your Email</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
                                 <label for="subject">Subject</label>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                <textarea class="form-control" name="message" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
                                 <label for="message">Message</label>
                             </div>
                         </div>
@@ -61,6 +61,78 @@
                         </div>
                     </div>
                 </form>
+
+                <script>
+                    document.getElementById('emailForm').addEventListener('submit', function(event) {
+                        var nameInput = document.getElementById('name');
+                        var emailInput = document.getElementById('email');
+                        var subjectInput = document.getElementById('subject');
+                        var messageInput = document.getElementById('message');
+                        var valid = true;
+
+                        // Check if name field is empty
+                        if (nameInput.value.trim() === '') {
+                            displayErrorMessage(nameInput, 'Name is required');
+                            valid = false;
+                        } else {
+                            removeErrorMessage(nameInput);
+                        }
+
+                        // Check if email field is empty or has invalid format
+                        if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
+                            displayErrorMessage(emailInput, 'Invalid email format');
+                            valid = false;
+                        } else {
+                            removeErrorMessage(emailInput);
+                        }
+
+                        // Check if subject field is empty or has invalid format
+                        if (subjectInput.value.trim() === '') {
+                            displayErrorMessage(subjectInput, 'Subject is required');
+                            valid = false;
+                        } else {
+                            removeErrorMessage(subjectInput);
+                        }
+
+                        // Check if message field is empty or has invalid format
+                        if (messageInput.value.trim() === '') {
+                            displayErrorMessage(messageInput, 'Message is required');
+                            valid = false;
+                        } else {
+                            removeErrorMessage(messageInput);
+                        }
+
+                        // Prevent form submission if validation fails
+                        if (!valid) {
+                            event.preventDefault();
+                        }
+                    });
+
+                    // Function to display error message
+                    function displayErrorMessage(inputElement, message) {
+                        if (! inputElement.parentElement.querySelector('.text-danger')) {
+                            var errorDiv = document.createElement('div');
+                            errorDiv.className = 'text-danger';
+                            errorDiv.textContent = message;
+                            inputElement.parentElement.appendChild(errorDiv);
+                        }
+                    }
+
+                    // Function to remove error message
+                    function removeErrorMessage(inputElement) {
+                        var errorDiv = inputElement.parentElement.querySelector('.text-danger');
+                        if (errorDiv) {
+                            errorDiv.remove();
+                        }
+                    }
+
+                    // Function to validate email format
+                    function isValidEmail(email) {
+                        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        return emailRegex.test(email);
+                    }
+                </script>
+
             </div>
         </div>
     </div>
