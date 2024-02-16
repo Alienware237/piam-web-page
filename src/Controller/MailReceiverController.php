@@ -50,7 +50,7 @@ class MailReceiverController extends AbstractController
 
         // If there are validation errors, return error response
         if (count($errors) > 0) {
-            return $this->render('index/index.html.twig', ['success' => false, 'message' => 'Failed to send email: Validation failed', 'error' => $errors]);
+            return $this->render('Components/acknowledgement', ['success' => false, 'message' => 'Failed to send email: Validation failed.' . "\n\n" . 'Please return in the home page of Talom digital art and try again', 'error' => $errors]);
         }
 
         // Compose the email
@@ -66,10 +66,10 @@ class MailReceiverController extends AbstractController
             $mailer->send($email);
 
             // Return success response
-            return $this->render('index/index.html.twig', ['success' => true, 'message' => 'Email sent successfully!']);
+            return $this->render('Components/acknowledgement.html.twig', ['success' => true, 'message' => 'Email sent successfully!' ."\n\n" . 'You can now return in the home page of Talom digital art']);
         } catch (TransportExceptionInterface $e) {
             // Return error response
-            return $this->render('index/index.html.twig', ['success' => false, 'message' => 'Failed to send email: ', 'error' => $e->getMessage()]);
+            return $this->render('Components/acknowledgement.html.twig', ['success' => false, 'message' => 'Failed to send email. please return in the home page of Talom digital art and try again', 'error' => $e->getMessage()]);
         }
     }
 }
