@@ -1,0 +1,56 @@
+/* acknowledgement.scss */
+
+/* Center the modal vertically and horizontally */
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Make the modal background red if success is false */
+.modal-content.success {
+  background-color: #f8d7da; /* Red color for error */
+}
+
+/* Make the modal background green if success is true */
+.modal-content.failed {
+  background-color: #d4edda; /* Green color for success */
+}
+
+/* Style the modal body */
+.modal-body {
+  padding: 20px;
+}
+
+/* Style the modal footer */
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #e9ecef; /* Gray border at the top of the footer */
+}
+
+/* Style the 'Return' button */
+.ack {
+  color: #fff; /* White text color */
+  background-color: #007bff; /* Blue background color */
+  border-color: #007bff; /* Blue border color */
+  border-radius: .25rem; /* Rounded border */
+  padding: .375rem .75rem; /* Padding inside the button */
+  font-size: 1rem; /* Button text size */
+  line-height: 1.5; /* Button text line height */
+  text-align: center; /* Center text horizontally */
+  vertical-align: middle; /* Center text vertically */
+  cursor: pointer; /* Cursor style */
+  user-select: none; /* Disable text selection */
+  border: 1px solid transparent; /* Transparent border */
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out; /* Smooth transition effect */
+  text-decoration: none; /* Remove default link underline */
+}
+
+/* Style the 'Return' button on hover */
+.ack:hover {
+  color: #fff; /* White text color */
+  background-color: #0069d9; /* Darker blue background color on hover */
+  border-color: #0062cc; /* Darker blue border color on hover */
+  text-decoration: none; /* Remove default link underline on hover */
+}

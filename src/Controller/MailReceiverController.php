@@ -66,7 +66,7 @@ class MailReceiverController extends AbstractController
             $mailer->send($email);
 
             // Return success response
-            return $this->render('Components/acknowledgement.html.twig', ['success' => true, 'message' => 'Email sent successfully!' ."\n\n" . 'You can now return in the home page of Talom digital art']);
+            return $this->render('Components/acknowledgement.html.twig', ['success' => 'success', 'message' => 'Email sent successfully!' ."\n\n" . 'You can now return in the home page of Talom digital art']);
         } catch (TransportExceptionInterface $e) {
             // Return error response
             return $this->render('Components/acknowledgement.html.twig', ['success' => false, 'message' => 'Failed to send email. please return in the home page of Talom digital art and try again', 'error' => $e->getMessage()]);
