@@ -428,3 +428,40 @@
 .testimonial-carousel .owl-dot.active::after {
     background: var(--primary);
 }
+
+.modal-dialog {
+    color: white;
+    position: fixed;
+    bottom: 50%;
+    z-index: -99;
+    margin-left: 40%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 4px;
+    animation: fadeOut 3s ease-in-out;
+}
+
+.modal-dialog.show {
+     z-index: 99;
+ }
+.modal-dialog.failed {
+     background-color: #f44336;
+ }
+.modal-dialog.succes {
+     background-color: deepskyblue;
+ }
+
+.modal-content {
+    background-color: deepskyblue;
+}
+
+.modal-content.failed {
+     background-color: #f44336;
+ }
+.modal-content.succes {
+     background-color: deepskyblue;
+ }
+
+.alert-dialog.show {
+    display: block;
+}

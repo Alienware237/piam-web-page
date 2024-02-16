@@ -105,7 +105,14 @@
                         // Prevent form submission if validation fails
                         if (!valid) {
                             event.preventDefault();
+                            // Update popup message and style based on the result
+                            showModal('Email sent successfully!', 'success');
                         }
+
+                        // Fetch form data
+                        var formData = new FormData(this);
+
+                        // Send form data to server using fetch API
                     });
 
                     // Function to display error message
@@ -131,9 +138,34 @@
                         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         return emailRegex.test(email);
                     }
+
+                    // Function to display modal and hide it after 5 seconds
+                    function showModal(message, type) {
+                        var popupMessage = document.getElementById('popupMessage');
+                        popupMessage.textContent = message;
+                        var popupContent = document.getElementById('popupContent');
+                        popupContent.classList.remove('success', 'failed');
+                        popupContent.classList.add(type);
+                        var popup = document.getElementById('popup');
+                        popup.classList.add('show');
+
+                        // Automatically hide the modal after 5 seconds
+                        setTimeout(function() {
+                            popup.classList.remove('show');
+                        }, 5000); // 5000 milliseconds = 5 seconds
+                    }
+
                 </script>
 
             </div>
+        </div>
+    </div>
+</div>
+
+<div id="popup" class="modal-dialog fade">
+    <div id="popupContent" class="modal-content">
+        <div class="modal-body">
+            <p id="popupMessage"></p>
         </div>
     </div>
 </div>
